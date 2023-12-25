@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using CourseLawProject.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +18,13 @@ namespace CourseLawProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        public readonly DataContext _dataContext;
         public MainWindow()
         {
             InitializeComponent();
+            _dataContext = new();
+            _dataContext.Users.Load();
+
         }
     }
 }
